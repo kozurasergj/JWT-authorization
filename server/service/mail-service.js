@@ -18,9 +18,8 @@ class MailService {
 
   async sendActivationMail(to, link) {
     const info = await this.transporter.sendMail({
-      from: 'kozura.sergj33@gmail.com',
-      to: 'kozura.sergj33@gmail.com',
-      secure: true,
+      from: process.env.SMTP_USER,
+      to,
       subject: `Account activation on the site ${process.env.API_URL}`,
       text: '',
       html: `
@@ -30,7 +29,6 @@ class MailService {
   </div>
   `,
     })
-    console.log(`Message ${to} sent: `, info.messageId)
   }
 }
 
