@@ -23,6 +23,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "express-validator": "^7.1.0",
     "nodemon": "^3.1.3"
   }
 }

@@ -4,6 +4,7 @@ import { config } from 'dotenv'
 import express from 'express'
 import mongoose from 'mongoose'
 import router from './router/index.js'
+import ErrorMiddleware from './middlewares/error-middlewares.js'
 
 config()
 const app = express()
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use('/api', router)
+app.use(ErrorMiddleware)
 
 const start = async () => {
   try {
