@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { v4 as uuidv4 } from 'uuid'
 import UserDto from '../dtos/user-dto.js'
 import ApiError from '../exceptions/api-error.js'
-import UserModel from '../models/user-model.js'
+import { default as UserModel, default as userModel } from '../models/user-model.js'
 import mailService from './mail-service.js'
 import tokenService from './token-service.js'
 
@@ -57,6 +57,28 @@ class UserService {
   async logout(refreshToken) {
     const tokenData = await tokenService.removeToken(refreshToken)
     return tokenData
+  }
+
+  async refresh(refreshToken) {
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError()
+    }
+    const userData = tokenService.validateRefreshToken(refreshToken)
+    const tokenFromDataDb = await tokenService.findToken(refreshToken)
+    if (!userData || !tokenFromDataDb) {
+      throw ApiError.UnauthorizedError()
+    }
+    const user = await UserModel.findById(userData.id)
+    const userDto = new UserDto(user)
+    const tokens = tokenService.generateToken({ ...userDto })
+    await tokenService.saveToken(userDto.id, tokens.refreshToken)
+
+    return { ...tokens, user: userDto }
+  }
+
+  async getAllUsers() {
+    const allUsers = await userModel.find()
+    return allUsers
   }
 }
 
