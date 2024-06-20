@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AuthResponse } from '../models/response/authResponse'
+import { AuthResponse } from '../types/response/authResponse'
 
 export const $api = axios.create({
   withCredentials: true,

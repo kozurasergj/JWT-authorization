@@ -12,7 +12,7 @@ import { Formik } from 'formik'
 import { observer } from 'mobx-react-lite'
 import { useContext, useState } from 'react'
 import { Context } from '../../../main'
-import { IAuthFormValues } from '../../../models/IForm'
+import { IAuthFormValues } from '../../../types/IForm'
 import { validateForm } from './validate'
 
 const Form = observer(() => {

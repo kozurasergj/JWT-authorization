@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from 'react'
 import ListUser from './components/ListUser'
 import Form from './components/ui/form/Form'
 import { Context } from './main'
-import { IUser } from './models/IUser'
 import UserService from './services/UserService'
+import { IUser } from './types/IUser'
 
 const App = observer(() => {
   const [users, setUsers] = useState<IUser[]>([])

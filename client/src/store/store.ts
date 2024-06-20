@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { makeAutoObservable } from 'mobx'
-import { IUser } from '../models/IUser'
-import { AuthResponse } from '../models/response/authResponse'
 import AuthService from '../services/AuthService'
+import { IUser } from '../types/IUser'
+import { AuthResponse } from '../types/response/authResponse'
 
 export default class Store {
   user = {} as IUser

@@ -1,5 +1,5 @@
 import { List, ListItem, ListItemButton, ListItemText } from '@mui/material'
-import { IUser } from '../models/IUser'
+import { IUser } from '../types/IUser'
 
 interface IListUser {
   users: IUser[]

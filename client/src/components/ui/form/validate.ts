@@ -1,4 +1,4 @@
-import { IAuthFormValues } from '../../../models/IForm'
+import { IAuthFormValues } from '../../../types/IForm'
 
 export const validateForm = (values: IAuthFormValues) => {
   const errors = {} as IAuthFormValues
